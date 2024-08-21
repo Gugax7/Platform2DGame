@@ -100,3 +100,7 @@ shape = SubResource("CircleShape2D_gqury")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_7r7d4")
 animation = &"Idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true

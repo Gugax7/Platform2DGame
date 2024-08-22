@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cnsebkvsjq3pu"]
 
 [ext_resource type="Texture2D" uid="uid://cpk7s4h4s65k" path="res://Assets/Sprites/Sprite Pack 2/Sprite Pack 2/2 - Mr. Mochi/Hurt (32 x 32).png" id="1_7nwdp"]
-[ext_resource type="Script" path="res://Assets/Scenes/player.gd" id="1_oo2rp"]
+[ext_resource type="Script" path="res://Assets/Scripts/player.gd" id="1_uem0m"]
 [ext_resource type="Texture2D" uid="uid://crcwe82oolh6q" path="res://Assets/Sprites/Sprite Pack 2/Sprite Pack 2/2 - Mr. Mochi/Idle (32 x 32).png" id="2_y3g7b"]
 [ext_resource type="Texture2D" uid="uid://bpojmbyjjg0g3" path="res://Assets/Sprites/Sprite Pack 2/Sprite Pack 2/2 - Mr. Mochi/Jumping (32 x 32).png" id="3_4gbsj"]
 [ext_resource type="Texture2D" uid="uid://bdcya8odfctx2" path="res://Assets/Sprites/Sprite Pack 2/Sprite Pack 2/2 - Mr. Mochi/Running (32 x 32).png" id="4_kh6e8"]
@@ -89,7 +89,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_oo2rp")
+script = ExtResource("1_uem0m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)

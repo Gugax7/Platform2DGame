@@ -103,4 +103,7 @@ animation = &"Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+limit_left = 2
+limit_top = 0
+limit_bottom = 300
 position_smoothing_enabled = true

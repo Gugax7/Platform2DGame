@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ce446lmijewgq"]
+[gd_scene load_steps=20 format=3 uid="uid://ce446lmijewgq"]
 
 [ext_resource type="PackedScene" uid="uid://cnsebkvsjq3pu" path="res://Assets/Scenes/player.tscn" id="1_pqqfm"]
 [ext_resource type="Texture2D" uid="uid://dwt0prhay0oyg" path="res://Assets/Sprites/Seasonal Tilesets/Seasonal Tilesets/1 - Grassland/Extra_plants (16 x 16).png" id="2_yji26"]
@@ -7,9 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://rfuu00w6ar2p" path="res://Assets/Sprites/Seasonal Tilesets/Seasonal Tilesets/1 - Grassland/Background parts/5 - Sky_color.png" id="5_y5bhv"]
 [ext_resource type="Texture2D" uid="uid://dcbkffldrwo0g" path="res://Assets/Sprites/Seasonal Tilesets/Seasonal Tilesets/1 - Grassland/Background parts/4 - Cloud_cover_2.png" id="6_xvmsr"]
 [ext_resource type="Texture2D" uid="uid://ynel72xrjfub" path="res://Assets/Sprites/Seasonal Tilesets/Seasonal Tilesets/1 - Grassland/Background parts/3 - Cloud_cover_1.png" id="7_pjf42"]
-[ext_resource type="Shader" path="res://Assets/Scenes/cloud_shader.gdshader" id="7_yevlt"]
+[ext_resource type="Shader" path="res://Assets/Shaders/cloud_shader.gdshader" id="7_yevlt"]
 [ext_resource type="Texture2D" uid="uid://cv83opwuc3vks" path="res://Assets/Sprites/Seasonal Tilesets/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="8_qoqpo"]
 [ext_resource type="Texture2D" uid="uid://c0rwgx07mw2t5" path="res://Assets/Sprites/Seasonal Tilesets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="9_ujvid"]
+[ext_resource type="PackedScene" uid="uid://do4slc2hu76nh" path="res://Assets/Scenes/mov_plat.tscn" id="11_nb8kv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hi2km"]
 texture = ExtResource("2_yji26")
@@ -283,6 +284,67 @@ sources/2 = SubResource("TileSetAtlasSource_v72lu")
 shader = ExtResource("7_yevlt")
 shader_parameter/move_speed = 0.02
 
+[sub_resource type="Animation" id="Animation_1kmnb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mov_plat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(602, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mov_plat2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 179)]
+}
+
+[sub_resource type="Animation" id="Animation_4bl3n"]
+resource_name = "moving_plat1"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mov_plat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(602, 96), Vector2(862, 95)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mov_plat2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.249372, 0.460984),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(18, 179), Vector2(19, 21)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7qjqp"]
+_data = {
+"RESET": SubResource("Animation_1kmnb"),
+"moving_plat1": SubResource("Animation_4bl3n")
+}
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -354,3 +416,15 @@ motion_mirroring = Vector2(432, 0)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_ujvid")
 centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7qjqp")
+}
+autoplay = "moving_plat1"
+
+[node name="mov_plat" parent="." instance=ExtResource("11_nb8kv")]
+position = Vector2(602, 96)
+
+[node name="mov_plat2" parent="." instance=ExtResource("11_nb8kv")]
+position = Vector2(18, 179)

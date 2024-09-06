@@ -10,7 +10,7 @@
 [ext_resource type="Shader" path="res://Assets/Shaders/cloud_shader.gdshader" id="7_yevlt"]
 [ext_resource type="Texture2D" uid="uid://cv83opwuc3vks" path="res://Assets/Sprites/Seasonal Tilesets/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="8_qoqpo"]
 [ext_resource type="Texture2D" uid="uid://c0rwgx07mw2t5" path="res://Assets/Sprites/Seasonal Tilesets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="9_ujvid"]
-[ext_resource type="PackedScene" uid="uid://do4slc2hu76nh" path="res://Assets/Scenes/mov_plat.tscn" id="11_nb8kv"]
+[ext_resource type="PackedScene" uid="uid://do4slc2hu76nh" path="res://Assets/PreFabs/mov_plat.tscn" id="11_nb8kv"]
 [ext_resource type="PackedScene" uid="uid://cm60akj04kvb4" path="res://Assets/Scenes/coin.tscn" id="12_kjixi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hi2km"]

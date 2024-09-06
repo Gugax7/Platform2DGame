@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ce446lmijewgq"]
+[gd_scene load_steps=22 format=3 uid="uid://ce446lmijewgq"]
 
 [ext_resource type="PackedScene" uid="uid://cnsebkvsjq3pu" path="res://Assets/Scenes/player.tscn" id="1_pqqfm"]
 [ext_resource type="Texture2D" uid="uid://dwt0prhay0oyg" path="res://Assets/Sprites/Seasonal Tilesets/Seasonal Tilesets/1 - Grassland/Extra_plants (16 x 16).png" id="2_yji26"]
@@ -11,7 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cv83opwuc3vks" path="res://Assets/Sprites/Seasonal Tilesets/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="8_qoqpo"]
 [ext_resource type="Texture2D" uid="uid://c0rwgx07mw2t5" path="res://Assets/Sprites/Seasonal Tilesets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="9_ujvid"]
 [ext_resource type="PackedScene" uid="uid://do4slc2hu76nh" path="res://Assets/PreFabs/mov_plat.tscn" id="11_nb8kv"]
-[ext_resource type="PackedScene" uid="uid://cm60akj04kvb4" path="res://Assets/Scenes/coin.tscn" id="12_kjixi"]
+[ext_resource type="PackedScene" uid="uid://cm60akj04kvb4" path="res://Assets/PreFabs/coin.tscn" id="12_kjixi"]
+[ext_resource type="PackedScene" uid="uid://br7ri7ply7uan" path="res://Assets/PreFabs/enemy.tscn" id="13_5gr2h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hi2km"]
 texture = ExtResource("2_yji26")
@@ -276,7 +277,8 @@ texture = ExtResource("4_cqbku")
 4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_jcp6l"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_hi2km")
 sources/1 = SubResource("TileSetAtlasSource_tx46a")
 sources/2 = SubResource("TileSetAtlasSource_v72lu")
@@ -453,3 +455,12 @@ position = Vector2(735, 61)
 
 [node name="Coin8" parent="." instance=ExtResource("12_kjixi")]
 position = Vector2(199, 252)
+
+[node name="enemy" parent="." instance=ExtResource("13_5gr2h")]
+position = Vector2(302, 132)
+
+[node name="enemy2" parent="." instance=ExtResource("13_5gr2h")]
+position = Vector2(444, 203)
+
+[node name="enemy3" parent="." instance=ExtResource("13_5gr2h")]
+position = Vector2(239, 211)

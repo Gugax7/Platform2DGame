@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnsebkvsjq3pu"]
+[gd_scene load_steps=18 format=3 uid="uid://cnsebkvsjq3pu"]
 
 [ext_resource type="Texture2D" uid="uid://cpk7s4h4s65k" path="res://Assets/Sprites/Sprite Pack 2/Sprite Pack 2/2 - Mr. Mochi/Hurt (32 x 32).png" id="1_7nwdp"]
 [ext_resource type="Script" path="res://Assets/Scripts/player.gd" id="1_uem0m"]
@@ -88,8 +88,14 @@ animations = [{
 "speed": 14.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ppu4d"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2gum"]
+size = Vector2(12, 20)
+
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 255
+collision_mask = 22
 script = ExtResource("1_uem0m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -108,3 +114,19 @@ limit_left = 2
 limit_top = 0
 limit_bottom = 300
 position_smoothing_enabled = true
+
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_ppu4d")
+debug_color = Color(0.981198, 0, 0.37315, 0.42)
+
+[node name="InvisibleSword" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleSword"]
+position = Vector2(14, 6)
+shape = SubResource("RectangleShape2D_c2gum")
+disabled = true
+
+[connection signal="area_entered" from="InvisibleSword" to="." method="_on_invisible_sword_area_entered"]

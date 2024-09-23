@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var wall_detector := $wall_detector as RayCast2D
 @onready var anim = $anim
 @onready var texture = $texture
+var knockback_vector := Vector2.ZERO
 var blood = preload("res://Assets/PreFabs/hurt_particle.tscn")
 
 const SPEED = 1400.0
@@ -24,19 +25,33 @@ func _physics_process(delta):
 	if wall_detector.is_colliding():
 		direction*=-1
 		self.scale.x*=-1;
+	if knockback_vector != Vector2.ZERO:
+		velocity = knockback_vector
 	move_and_slide()
 
 func hurt():
 	var particle_to_right = true
+	var knockback_tween := get_tree().create_tween()
 	if player.global_position.x > global_position.x:
 		particle_to_right = false
 	#player is on right
 	if player.global_position.x > global_position.x and velocity.x < 0:
 		texture.flip_h = true
 		
+		
 	#player is on left
 	elif player.global_position.x < global_position.x and velocity.x > 0:
 		texture.flip_h = true
+		
+	
+	if particle_to_right:
+		knockback_vector = Vector2(200,-200)
+		knockback_tween.tween_property(self,"knockback_vector",Vector2.ZERO,0.25)
+	else:
+		knockback_vector = Vector2(-200,-200)
+		knockback_tween.tween_property(self,"knockback_vector",Vector2.ZERO,0.25)
+	
+	await get_tree().create_timer(0.1).timeout
 	var blood_instance = blood.instantiate()
 	blood_instance.global_position = global_position
 	blood_instance.emitting = true

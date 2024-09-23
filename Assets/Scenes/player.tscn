@@ -92,7 +92,7 @@ animations = [{
 radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2gum"]
-size = Vector2(12, 20)
+size = Vector2(25, 20)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 22
@@ -123,9 +123,10 @@ shape = SubResource("CircleShape2D_ppu4d")
 debug_color = Color(0.981198, 0, 0.37315, 0.42)
 
 [node name="InvisibleSword" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleSword"]
-position = Vector2(14, 6)
+position = Vector2(20.5, 6)
 shape = SubResource("RectangleShape2D_c2gum")
 disabled = true
 
